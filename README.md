@@ -6,7 +6,7 @@ Project 2 will really test your new skills, bringing weeks of knowledge together
 
 **You will be working individually for this project**. The project will be spread across **two weeks**, with all deliverables being due at the end of week 6. **Prototypes must be approved by instructors by Thursday, April 6th.**
 
-Be creative! You can do whatever you want, as long as it meets the project requirements and the [student code of conduct](../code-of-conduct.md).
+Be creative! You can do whatever you want, as long as it meets the project requirements and the [student code of conduct](https://ga-adi.gitbooks.io/adi-oreo/content/markdown/code-of-conduct.html).
 
 Also, for this project, you will be providing mock data (i.e. you will not be connecting to the internet to download data). However, to make your lives easier, you are allowed to use the [Picasso photo library](http://square.github.io/picasso/) if you want to load images from the web.
 
@@ -85,7 +85,7 @@ Additional requirements:
 
 ## Code of Conduct
 
-As always, your app must adhere to General Assembly's [student code of conduct guidelines](https://github.com/ga-adi-macaron/Course-Materials/blob/master/markdown/code-of-conduct.md).
+As always, your app must adhere to General Assembly's [student code of conduct guidelines](https://ga-adi.gitbooks.io/adi-oreo/content/markdown/code-of-conduct.html).
 If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
 
 ## Example Deliverable
