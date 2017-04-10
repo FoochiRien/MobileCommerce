@@ -7,11 +7,11 @@ package lyadrienne.generalassemb.git.myapplication;
 public class Doll {
 
     private long mId;
-    private int mRetailPrice, mCurrentPrice, mHeight, mDiscount;
-    private String mItemName, mCompany, mEthnicity, mDescription;
-    private boolean mWishList, mCheckOut;
+    private int mHeight, mDiscount, mWishList, mCheckOut;
+    private String mItemName, mCompany, mEthnicity, mDescription, mCurrentPrice, mRetailPrice;
 
-    public Doll(long id, int retailPrice, int currentPrice, int height, int discount, String itemName, String company, String ethnicity, String description, boolean wishList, boolean checkOut) {
+
+    public Doll(long id, String retailPrice, String currentPrice, int height, int discount, String itemName, String company, String ethnicity, String description, int wishList, int checkOut) {
         mId = id;
         mRetailPrice = retailPrice;
         mCurrentPrice = currentPrice;
@@ -30,12 +30,20 @@ public class Doll {
         return mId;
     }
 
-    public int getRetailPrice() {
-        return mRetailPrice;
+    public int getWishList() {
+        return mWishList;
     }
 
-    public int getCurrentPrice() {
+    public int getCheckOut() {
+        return mCheckOut;
+    }
+
+    public String getCurrentPrice() {
         return mCurrentPrice;
+    }
+
+    public String getRetailPrice() {
+        return mRetailPrice;
     }
 
     public int getHeight() {
@@ -62,12 +70,5 @@ public class Doll {
         return mDescription;
     }
 
-    public boolean isWishList() {
-        return mWishList;
-    }
-    //TODO do i need setters?
 
-    public boolean isCheckOut() {
-        return mCheckOut;
-    }
 }
