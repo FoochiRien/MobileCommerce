@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/product_imageview2"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@color/colorAccent"
+        />
+
+    <TextView
+        android:id="@+id/itemname_view2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/product_imageview2"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/product_imageview2"
+        android:background="@color/colorAccent"
+        app:layout_constraintLeft_toRightOf="@+id/product_imageview2"
+        tools:layout_editor_absoluteY="51dp"/>
+
+    <TextView
+        android:id="@+id/currentprice_view2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/product_imageview2"
+        android:layout_below="@id/itemname_view2"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/product_imageview2"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toRightOf="@+id/product_imageview2"
+        tools:layout_editor_absoluteY="17dp"/>
+
+</RelativeLayout>

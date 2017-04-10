@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:padding="15dp"
+    android:gravity="center_horizontal|center_vertical">
+
+    <ImageView
+        android:id="@+id/detail_imageview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/detail_titleview"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:id="@+id/detail_descripview"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:id="@+id/detail_amountview"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"/>
+
+    <Button
+        android:id="@+id/detail_addtocart"
+        android:text="@string/addtocart"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/detail_addwishlist"
+        android:text="@string/addtowishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

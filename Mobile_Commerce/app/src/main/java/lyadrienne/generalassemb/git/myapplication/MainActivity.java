@@ -19,20 +19,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
         dbSetup.getReadableDatabase();
 
         DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
         List<Doll> dolls = helper.getAllDolls();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        // ---------- recyclerview set-up
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+        DollRecyclerViewAdapter adapter = new DollRecyclerViewAdapter(dolls);
+        recyclerView.setAdapter(adapter);
 
-        recyclerView.setAdapter(new DollRecyclerViewAdapter(dolls));
-
-        //Todo search bar
+        //Todo activity_search bar
 
         //TODO on click for 12/ 30/ clearance/ barbie / ethnic
 

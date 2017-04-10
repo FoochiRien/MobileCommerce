@@ -237,7 +237,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 cursor.close();
                 return dolls;
 }
-// -------search query
+// -------activity_search query
 
 /*
     //--------add item to shopping car
