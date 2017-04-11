@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mBarbieView = (Button) findViewById(R.id.barbie_view);
         mEthnicDollsView = (Button) findViewById(R.id.ethnicity_view);
 
-        
+
 //        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2);
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(linearLayoutManager);

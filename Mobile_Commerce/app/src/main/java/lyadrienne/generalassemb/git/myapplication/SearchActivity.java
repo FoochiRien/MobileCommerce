@@ -55,56 +55,10 @@ public class SearchActivity extends AppCompatActivity {
 
         MenuItem menuItem = menu.findItem(R.id.searchbar);
 
-        //possible solution
-        new MenuItemCompat.OnActionExpandListener() {
-
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                TextWatcher watcher = new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        String doll = String.valueOf(s);
-                        List<Doll> tempDoll = DollSQLiteOpenHelper.getInstance(searchView.getContext()).searchDollList(doll);
-                        Log.d("hghg", "handleIntent: jhjgjhgjhgjhgjhgjgjhgjh");
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                };
-                return false;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-
-                return false;
-            }
-        };
         return true;
-//        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener(){
-//            @Override
-//            public boolean onMenuItemActionExpand(MenuItem item) {
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onMenuItemActionCollapse(MenuItem item) {
-//              adapter.replaceAllDolls(DollSQLiteOpenHelper.getInstance(SearchActivity.this).getAllDolls());
-//
-//                return true;
-//            }
-//        });
-
     }
 
-    @Override
+
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);

@@ -115,8 +115,8 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(DOLL_TABLE_NAME,
                 null, //column names
-                COL_TITLE + "LIKE ? " , /*+ " OR " + COL_DESCRIPTION + " Like ? ",*/ //selections
-                new String[]{" % "+ query + " % "},/* query + "%"}*/
+                COL_TITLE + " LIKE ? " + " OR " + COL_DESCRIPTION + " Like ? ", //selections
+                new String[]{"%"+ query + "%" + query + "%"},
                 null,
                 null,
                 null,
@@ -141,7 +141,6 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return searchResults;
-
     }
 
     public Doll getItemById(long id){
@@ -307,8 +306,6 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         return dolls;
     }
 
-
-// -------activity_search query
 
 /*
     //--------add item to shopping car
