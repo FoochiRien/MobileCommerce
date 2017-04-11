@@ -18,12 +18,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
     private DollRecyclerViewAdapter adapter;
+    List<Doll> dolls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,30 @@ public class SearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
-        List<Doll> dolls = helper.getAllDolls();
+
+
+        Intent intent = getIntent();
+        switch (intent.getIntExtra("search", -1))
+        {
+            case 0:
+                dolls=helper.getDealItems();
+                break;
+            case 1:
+                dolls=helper.getSaleItems();
+                break;
+            case 2:
+                dolls=helper.getClearanceItems();
+                break;
+//            case 3:
+//                dolls=helper.getBarbie();
+//                break;
+//            case 4:
+//                dolls=helper.getEtnicity();
+//                break;
+            default:
+                dolls=helper.getAllDolls();
+
+        }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

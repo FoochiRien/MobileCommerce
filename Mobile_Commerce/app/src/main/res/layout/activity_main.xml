@@ -19,13 +19,13 @@
 
 
     <Button
-        android:id="@+id/thirtypercentoff_view"
+        android:id="@+id/sale_view"
         android:text="30% OFF"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>
 
     <Button
-        android:id="@+id/twelvepercentoff_view"
+        android:id="@+id/deal_view"
         android:text="12% OFF"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>

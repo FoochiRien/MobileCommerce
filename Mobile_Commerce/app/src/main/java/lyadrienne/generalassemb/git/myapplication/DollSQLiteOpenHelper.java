@@ -1,5 +1,6 @@
 package lyadrienne.generalassemb.git.myapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
@@ -148,34 +149,29 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(DOLL_TABLE_NAME,
                 null,
-                COL_ID+ " = ?",
+                COL_ID+ " = ? ",
                 new String[]{String.valueOf(id)},
                 null, null, null);
 
         Doll dolls = null;
 
         if (cursor.moveToFirst()) {
-
-                id = cursor.getLong(cursor.getColumnIndex(COL_ID));
-                String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
-                String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
-                String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
-                String retailPrice = cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE));
-                int height = cursor.getInt(cursor.getColumnIndex(COL_HEIGHT));
-                String currentPrice = cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE));
-                int discount = cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT));
-                String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
-                int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
-                int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
-
-                Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                dolls = new Doll(cursor.getLong(cursor.getColumnIndex(COL_ID)),
+                        cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE)),
+                        cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE)),
+                        cursor.getInt(cursor.getColumnIndex(COL_HEIGHT)),
+                        cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT)),
+                        cursor.getString(cursor.getColumnIndex(COL_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(COL_COMPANY)),
+                        cursor.getString(cursor.getColumnIndex(COL_ETHNICITY)),
+                        cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION)),
+                        cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST)),
+                        cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT)));
             }
         cursor.close();
         return dolls;
     }
 
-    //todo method for adding to cart and wishlist
 
     // ----- Queries for e-commerce------------------------------------------------------
 
@@ -184,7 +180,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     public List<Doll> getSaleItems() {
         SQLiteDatabase db = getReadableDatabase();
 
-        String selection = COL_DISCOUNT + " = ?";
+        String selection = COL_DISCOUNT + " = ? ";
 
         Cursor cursor = db.query(DOLL_TABLE_NAME,
                 new String[]{},
@@ -226,10 +222,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     public List<Doll> getDealItems() {
         SQLiteDatabase db = getReadableDatabase();
 
-        String selection = COL_DISCOUNT + " = ?";
+        String selection = COL_DISCOUNT + " = ? ";
 
         Cursor cursor = db.query(DOLL_TABLE_NAME,
-                new String[]{},
+                null,
                 selection,
                 new String[]{"12"},
                 null,
@@ -268,7 +264,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     public List<Doll> getClearanceItems() {
         SQLiteDatabase db = getReadableDatabase();
 
-        String selection = COL_DISCOUNT + " = ?";
+        String selection = COL_DISCOUNT + " = ? ";
 
         Cursor cursor = db.query(DOLL_TABLE_NAME,
                 new String[]{},
@@ -307,38 +303,35 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
 
-/*
     //--------add item to shopping car
-    public int  addItemToCart(Doll doll) {
+    public void addItemToCart(long id) {
+
         SQLiteDatabase db = getWritableDatabase();
-        int rowsAffected = db.add(DOLL_TABLE_NAME,
-                COL_ID + " = ?",
-                new String[]{String.valueOf(doll.getId())});
+        ContentValues values = new ContentValues();
+        values.put(COL_CHECK_OUT, "1");
+        db.update(DOLL_TABLE_NAME,values,COL_ID+ " = "+ id,null );
         db.close();
-        return (rowsAffected > 0);
     }
 
     // ------- delete item from cart changes the boolean from
-    // change the boolean property of the col_shopping-cart
-    public int removeItemsFromCart(Doll doll) {
+    public void removeItemsFromCart(long id) {
         SQLiteDatabase db = getWritableDatabase();
-
-        int rowsAffected = db.delete(DOLL_TABLE_NAME,
-                COL_ID + " = ?",
-                new String[]{String.valueOf(doll.getId())});
-
+        ContentValues values = new ContentValues();
+        values.put(COL_CHECK_OUT, "0");
+        db.update(DOLL_TABLE_NAME,values,COL_ID+ " = "+ id,null );
         db.close();
-        return (rowsAffected > 0);
     }
 
     // -------shopping_cart items
-    public List<Doll> getShoppingCartItems() {
+    public List<Doll> getShoppingCartItems(long id) {
         SQLiteDatabase db = getReadableDatabase();
 
+        String selection = COL_CHECK_OUT + " = ?";
+
         Cursor cursor = db.query(DOLL_TABLE_NAME,
-                null,
-                null,
-                null,
+                new String[]{},
+                selection,
+                new String[]{"1"},
                 null,
                 null,
                 null);
@@ -347,6 +340,22 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
+                id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+                String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
+                String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
+                String retailPrice = cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE));
+                int height = cursor.getInt(cursor.getColumnIndex(COL_HEIGHT));
+                String currentPrice = cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE));
+                int discount = cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT));
+                String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
+                int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+
+                Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
+                        ethnicity, descrip, wishlist, checkout);
+                dolls.add(doll);
+
                 cursor.moveToNext();
             }
 
@@ -357,48 +366,33 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
 
 
     // ------- add item to wish list
-    // change the boolean property of the wish_list column
-    public int addItemWishList(Doll doll) {
+    public void addItemWishList(long id) {
         SQLiteDatabase db = getWritableDatabase();
-
-        int rowsAffected = db. (DOLL_TABLE_NAME,
-                COL_ID + " = ? ",
-                new String[]{String.valueOf(doll.getId())});
+        ContentValues values = new ContentValues();
+        values.put(COL_WISH_LIST, "1");
+        db.update(DOLL_TABLE_NAME,values,COL_ID+ " = "+ id,null );
+        db.close();
     }
 
-}
 
     // ------- remove item from wish list
-    public List<Doll> removeItemfromWishList() {
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor cursor = db.query(DOLL_TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
-
-        List<Doll> dolls = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                cursor.moveToNext();
-            }
-
-        }
-        cursor.close();
-        return dolls;
+    public void removeItemfromWishList(long id) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_WISH_LIST, "0");
+        db.update(DOLL_TABLE_NAME,values,COL_ID+ " = "+ id,null );
+        db.close();
     }
 
     public List<Doll> getWishListItems() {
         SQLiteDatabase db = getReadableDatabase();
 
+        String selection = COL_WISH_LIST + " = ?";
+
         Cursor cursor = db.query(DOLL_TABLE_NAME,
-                null,
-                null,
-                null,
+                new String[]{},
+                selection,
+                new String[]{"1"},
                 null,
                 null,
                 null);
@@ -407,6 +401,22 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
+                long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+                String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
+                String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
+                String retailPrice = cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE));
+                int height = cursor.getInt(cursor.getColumnIndex(COL_HEIGHT));
+                String currentPrice = cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE));
+                int discount = cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT));
+                String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
+                int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+
+                Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
+                        ethnicity, descrip, wishlist, checkout);
+                dolls.add(doll);
+
                 cursor.moveToNext();
             }
 
@@ -414,7 +424,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         cursor.close();
         return dolls;
     }
-*/
+
 
 // --------sort capability
 
