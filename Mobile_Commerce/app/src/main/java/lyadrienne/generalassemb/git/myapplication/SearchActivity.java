@@ -1,0 +1,138 @@
+package lyadrienne.generalassemb.git.myapplication;
+
+import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+
+import java.util.List;
+
+public class SearchActivity extends AppCompatActivity {
+
+    private DollRecyclerViewAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
+        List<Doll> dolls = helper.getAllDolls();
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+         adapter = new DollRecyclerViewAdapter(dolls);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        final SearchView searchView = (SearchView) menu.findItem(R.id.searchbar).getActionView();
+        ComponentName component = new ComponentName(this, SearchActivity.class);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(component));
+
+        MenuItem menuItem = menu.findItem(R.id.searchbar);
+
+        //possible solution
+        new MenuItemCompat.OnActionExpandListener() {
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                TextWatcher watcher = new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        String doll = String.valueOf(s);
+                        List<Doll> tempDoll = DollSQLiteOpenHelper.getInstance(searchView.getContext()).searchDollList(doll);
+                        Log.d("hghg", "handleIntent: jhjgjhgjhgjhgjhgjgjhgjh");
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                };
+                return false;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+
+                return false;
+            }
+        };
+        return true;
+//        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener(){
+//            @Override
+//            public boolean onMenuItemActionExpand(MenuItem item) {
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onMenuItemActionCollapse(MenuItem item) {
+//              adapter.replaceAllDolls(DollSQLiteOpenHelper.getInstance(SearchActivity.this).getAllDolls());
+//
+//                return true;
+//            }
+//        });
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    public void handleIntent(Intent intent){
+
+        if(Intent.ACTION_SEARCH.equals(intent.getAction())){
+
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+            Log.d("hghg", "handleIntent: jhjgjhgjhgjhgjhgjgjhgjh");
+            adapter.replaceAllDolls(DollSQLiteOpenHelper.getInstance(SearchActivity.this).searchDollList(query));
+        }
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch(item.getItemId()) {
+//
+//            case R.id.action_shoppingcart:
+//                startActivity(new Intent(SearchActivity.this,ShoppingCartActivity.class));
+//                return true;
+//            case R.id.action_wishlist:
+//                //Todo go to wishlist
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+}

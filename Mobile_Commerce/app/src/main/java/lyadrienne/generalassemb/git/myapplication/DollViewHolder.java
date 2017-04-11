@@ -11,25 +11,17 @@ import android.widget.TextView;
 
 public class DollViewHolder extends RecyclerView.ViewHolder {
     View mRootView;
-    TextView mItemNameView, mDescriptionView, mRetailPriceView, mCurrentPriceView;
-    Button mSaleView, mDiscountView, mClearanceView, mBarbieView, mEthnicDollsView;
+    TextView mItemNameView, mCurrentPriceView;
 
 
     public DollViewHolder(View itemView) {
         super(itemView);
 
+        //----Recyclerview
         mRootView = itemView;
         mItemNameView = (TextView) itemView.findViewById(R.id.itemname_view);
-//        mDescriptionView = (TextView) itemView.findViewById(R.id.description_view);
-//        mRetailPriceView = itemView.findViewById(R.id.);
-//        mCurrentPriceView = ;
+        mCurrentPriceView = (TextView) itemView.findViewById(R.id.currentprice_view);
 
-        //---------Home screen buttons
-        mSaleView = (Button) itemView.findViewById(R.id.thirtypercentoff_view);
-        mDiscountView = (Button) itemView.findViewById(R.id.twelvepercentoff_view);
-        mClearanceView = (Button) itemView.findViewById(R.id.clearance_view);
-        mBarbieView = (Button) itemView.findViewById(R.id.barbie_view);
-        mEthnicDollsView = (Button) itemView.findViewById(R.id.ethnicity_view);
     }
 
 
