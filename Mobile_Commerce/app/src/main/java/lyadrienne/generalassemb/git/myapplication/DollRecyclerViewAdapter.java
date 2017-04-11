@@ -19,6 +19,8 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
     public DollRecyclerViewAdapter(List<Doll> dolls){
         mDolls = dolls;
     }
+
+
     @Override
     public DollViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -29,12 +31,9 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
     public void onBindViewHolder(DollViewHolder holder, final int position) {
         final Doll currentDoll = mDolls.get(position);
 
-        //TODO holder for textview boxes and activity_search buttson
         holder.mItemNameView.setText(currentDoll.getItemName());
         holder.mCurrentPriceView.setText(String.valueOf(currentDoll.getRetailPrice()));
 
-
-        //TODO holder for mRootView for setOnLongClickListner
         holder.mRootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +43,6 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
                 v.getContext().startActivity(intent);
             }
         });
-
         }
 
 

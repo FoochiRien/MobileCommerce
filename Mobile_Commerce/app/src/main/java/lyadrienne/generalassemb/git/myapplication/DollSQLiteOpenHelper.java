@@ -323,7 +323,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     // -------shopping_cart items
-    public List<Doll> getShoppingCartItems(long id) {
+    public List<Doll> getShoppingCartItems() {
         SQLiteDatabase db = getReadableDatabase();
 
         String selection = COL_CHECK_OUT + " = ?";
@@ -340,7 +340,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+                long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
                 String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
                 String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
                 String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
@@ -362,6 +362,30 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return dolls;
+    }
+
+    // -------total for shopping cart
+    public float sumOfShoppingCart(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = COL_CHECK_OUT + " = ? ";
+
+        Cursor cursor = db.query(DOLL_TABLE_NAME,
+                null,
+                selection,
+                new String[]{"1"},
+                null, null, null);
+        float sum=0 ;
+        if(cursor.moveToFirst()){
+            while(!cursor.isAfterLast()){
+//                if(cursor.getColumnIndex())
+
+                sum+=Float.parseFloat(cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE)));
+                cursor.moveToNext();
+            }
+        }
+        db.close();
+        return sum;
     }
 
 

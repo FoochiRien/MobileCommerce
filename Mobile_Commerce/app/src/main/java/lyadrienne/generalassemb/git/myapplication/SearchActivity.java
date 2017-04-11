@@ -37,7 +37,6 @@ public class SearchActivity extends AppCompatActivity {
 
         DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
 
-
         Intent intent = getIntent();
         switch (intent.getIntExtra("search", -1))
         {
@@ -73,6 +72,7 @@ public class SearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
 
+
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView) menu.findItem(R.id.searchbar).getActionView();
         ComponentName component = new ComponentName(this, SearchActivity.class);
@@ -82,6 +82,8 @@ public class SearchActivity extends AppCompatActivity {
 
         return true;
     }
+
+
 
 
     protected void onNewIntent(Intent intent) {
@@ -100,18 +102,18 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch(item.getItemId()) {
-//
-//            case R.id.action_shoppingcart:
-//                startActivity(new Intent(SearchActivity.this,ShoppingCartActivity.class));
-//                return true;
-//            case R.id.action_wishlist:
-//                //Todo go to wishlist
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+
+            case R.id.action_shoppingcart:
+                startActivity(new Intent(SearchActivity.this,ShoppingCartActivity.class));
+                return true;
+            case R.id.action_wishlist:
+                //Todo go to wishlist
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
