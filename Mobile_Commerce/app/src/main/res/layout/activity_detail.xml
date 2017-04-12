@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:gravity="center_horizontal|center_vertical"
+    android:background="@color/colorParentBackground"
     tools:context="lyadrienne.generalassemb.git.myapplication.DetailActivity">
 
     <ImageView
@@ -20,30 +21,40 @@
     <TextView
         android:id="@+id/detail_titleview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
     <TextView
         android:id="@+id/detail_descripview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dp"/>
+        android:padding="15dp"
+       />
 
     <TextView
         android:id="@+id/detail_amountview"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"/>
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="$34.330"
+        android:textSize="18dp"
+        android:layout_margin="15dp"
+        />
 
     <Button
         android:id="@+id/detail_addtocart"
+        android:textSize="14dp"
         android:text="@string/addtocart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+        />
     <TextView
         android:id="@+id/detail_addwishlist"
         android:text="@string/addtowishlist"
-        android:padding="20dp"
+        android:padding="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+       />
 
 </LinearLayout>

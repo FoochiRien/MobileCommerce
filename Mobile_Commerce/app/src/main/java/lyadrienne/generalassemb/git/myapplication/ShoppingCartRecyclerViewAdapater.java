@@ -1,9 +1,7 @@
 package lyadrienne.generalassemb.git.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +9,13 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * Created by Admin on 4/8/17.
+ * Created by Admin on 4/12/17.
  */
 
-public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder>{
-
+public class ShoppingCartRecyclerViewAdapater extends RecyclerView.Adapter<DollViewHolder>{
     private List<Doll> mDolls;
 
-    public DollRecyclerViewAdapter(List<Doll> dolls){
+    public ShoppingCartRecyclerViewAdapater(List<Doll> dolls) {
         mDolls = dolls;
     }
 
@@ -34,7 +31,16 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
 
         holder.mItemNameView.setText(currentDoll.getItemName());
         holder.mCurrentPriceView.setText(String.valueOf(currentDoll.getRetailPrice()));
+        holder.mRootView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                DollSQLiteOpenHelper.getInstance(v.getContext()).removeItemsFromCart(currentDoll.getId());
+                mDolls.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
 
+                return false;
+            }
+        });
         holder.mRootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,13 +50,13 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
                 v.getContext().startActivity(intent);
             }
         });
-        }
 
 
-
+    }
 
     @Override
     public int getItemCount() {
+
         return mDolls.size();
     }
 

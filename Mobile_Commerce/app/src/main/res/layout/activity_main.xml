@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorParentBackground"
     tools:context="lyadrienne.generalassemb.git.myapplication.MainActivity">
 
     <android.support.v7.widget.Toolbar
@@ -17,36 +18,60 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-
     <Button
         android:id="@+id/sale_view"
-        android:text="30% OFF"
+        android:text="@string/saleview"
         android:layout_width="match_parent"
-        android:layout_height="48dp"/>
+        android:layout_weight=".20"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorViewBackground"
+        />
 
     <Button
         android:id="@+id/deal_view"
-        android:text="12% OFF"
+        android:text="@string/discountview"
         android:layout_width="match_parent"
-        android:layout_height="48dp"/>
+        android:layout_weight=".20"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorViewBackground"
+        />
 
     <Button
         android:id="@+id/clearance_view"
-        android:text="Clearance"
+        android:text="@string/clearanceview"
         android:layout_width="match_parent"
-        android:layout_height="48dp"/>
+        android:layout_weight=".20"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorViewBackground"
+       />
 
     <Button
         android:id="@+id/barbie_view"
-        android:text="Barbie View"
+        android:text="@string/barbie"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_weight=".20"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorViewBackground"
+        />
 
     <Button
         android:id="@+id/ethnicity_view"
-        android:text="Ethnicity"
+        android:text="@string/ethnicity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_weight=".20"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorViewBackground"
+        />
 
 
 </LinearLayout>

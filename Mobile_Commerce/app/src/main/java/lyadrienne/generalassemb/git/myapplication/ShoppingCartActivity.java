@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ShoppingCartActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DollRecyclerViewAdapter adapter;
+    private ShoppingCartRecyclerViewAdapater shoppingadapater;
     List<Doll> dolls;
 
     TextView mSumTotal;
@@ -33,6 +33,9 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.checkout_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Shopping Cart");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
         dolls = helper.getShoppingCartItems();
@@ -40,17 +43,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.shoppingcart_recycleview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new DollRecyclerViewAdapter(dolls);
-        recyclerView.setAdapter(adapter);
+        shoppingadapater = new ShoppingCartRecyclerViewAdapater(dolls);
+        recyclerView.setAdapter(shoppingadapater);
 
         mSumTotal = (TextView) findViewById(R.id.sum_textview);
-        float sum = helper.sumOfShoppingCart();
-        mSumTotal.setText("$ "+ sum);
+
+        mSumTotal.setText(String.valueOf(helper.sumOfShoppingCart()));
 
         mCheckOutButton = (Button) findViewById(R.id.checkout_button);
         mCheckOutButton.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -78,6 +79,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
         builder.setTitle("Checkout")
                 .setMessage("Thank you for your purchase")
@@ -86,10 +88,12 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(ShoppingCartActivity.this, "Purchase complete", Toast.LENGTH_SHORT).show();
+                        DollSQLiteOpenHelper.getInstance(ShoppingCartActivity.this).removeAllItemsFromCart();
+                        dolls = DollSQLiteOpenHelper.getInstance(ShoppingCartActivity.this).getShoppingCartItems();
+                        shoppingadapater.replaceAllDolls(dolls);
                     }
                 })
         .show();
-
 
         }
 

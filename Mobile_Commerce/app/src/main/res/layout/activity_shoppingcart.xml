@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorParentBackground"
     tools:context="lyadrienne.generalassemb.git.myapplication.ShoppingCartActivity">
 
     <android.support.v7.widget.Toolbar
@@ -27,8 +28,13 @@
         android:id="@+id/sum_textview"
         android:layout_width="0dp"
         android:layout_weight=".5"
-        android:layout_gravity="left"
-        android:background="@color/colorAccent"
+        android:text="Text"
+        android:layout_gravity="center"
+        android:padding="14dp"
+        android:textAlignment="center"
+        android:background="@color/colorViewBackground"
+        android:textSize="18dp"
+
         android:layout_height="48dp"/>
 
     <Button
@@ -36,7 +42,10 @@
         android:layout_weight=".5"
         android:text="@string/checkout"
         android:layout_width="0dp"
-        android:layout_height="48dp"/>
+        android:layout_height="48dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/colorViewBackground"
+        />
 
  </LinearLayout>
 

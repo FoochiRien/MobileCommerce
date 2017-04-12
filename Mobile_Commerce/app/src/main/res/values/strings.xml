@@ -9,6 +9,14 @@
     //Searchbar
     <string name="searchablefeature">Search Bar</string>
     <string name="search_hint">Search</string>
+
+    //MainActvity
+    <string name="saleview">Sale Items - 30% off</string>
+    <string name="discountview">Discount Items - 12% off</string>
+    <string name="clearanceview">Clearance Items - 60% off</string>
+    <string name="barbie">Barbie dolls</string>
+    <string name="ethnicity">Ethnic dolls</string>
+
     //Detail Activity//
     <string name="addtocart">Add to Cart</string>
     <string name="addtowishlist">Add to Wish List</string>

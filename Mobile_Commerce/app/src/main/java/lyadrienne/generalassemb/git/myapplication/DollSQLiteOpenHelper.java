@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -375,15 +376,26 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 selection,
                 new String[]{"1"},
                 null, null, null);
-        float sum=0 ;
+        float sum=0f ;
         if(cursor.moveToFirst()){
             while(!cursor.isAfterLast()){
                 sum+=Float.parseFloat(cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE)));
                 cursor.moveToNext();
+                DecimalFormat twoDForm = new DecimalFormat("#.##");
+                sum = Float.valueOf(twoDForm.format(sum));
             }
         }
         db.close();
         return sum;
+    }
+
+    // -------remove items from cart after purchase
+    public void removeAllItemsFromCart() {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_CHECK_OUT, "0");
+        db.update(DOLL_TABLE_NAME,values,null,null );
+        db.close();
     }
 
 
