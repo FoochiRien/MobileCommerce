@@ -15,8 +15,8 @@
 
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintVertical_bias="0.501"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
@@ -24,6 +24,7 @@
         android:layout_width="222dp"
         android:layout_height="41dp"
         android:paddingBottom="5dp"
+        android:background="@color/colorViewBackground"
         android:text="Test"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -39,6 +40,7 @@
         android:id="@+id/currentprice_view"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
+        android:background="@color/colorViewBackground"
         android:text="Test"
         android:textSize="18sp"
         android:maxLines="2"

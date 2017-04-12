@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -44,6 +46,8 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
                 v.getContext().startActivity(intent);
             }
         });
+        //todo picasso
+//        Picasso.with(this).load(Doll.getImageView).resize(200,200).into(holder.mImageView);
         }
 
 

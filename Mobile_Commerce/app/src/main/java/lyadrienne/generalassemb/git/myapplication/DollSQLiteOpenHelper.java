@@ -35,6 +35,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String COL_DESCRIPTION = "descrip";
     private static final String COL_WISH_LIST = "wish_list";
     private static final String COL_CHECK_OUT = "check_out";
+    private static final String 
 
     private static final String CREATE_DOLL_TABLE = "CREATE TABLE" + DOLL_TABLE_NAME + "(" +
             COL_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -303,6 +304,89 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         return dolls;
     }
 
+    //------ Barbie dolls
+    public List<Doll> getBarbieDolls() {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = COL_COMPANY + " = ? ";
+
+        Cursor cursor = db.query(DOLL_TABLE_NAME,
+                new String[]{},
+                selection,
+                new String[]{"Mattel"},
+                null,
+                null,
+                null);
+
+        List<Doll> dolls = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+                String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
+                String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
+                String retailPrice = cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE));
+                int height = cursor.getInt(cursor.getColumnIndex(COL_HEIGHT));
+                String currentPrice = cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE));
+                int discount = cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT));
+                String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
+                int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+
+                Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
+                        ethnicity, descrip, wishlist, checkout);
+                dolls.add(doll);
+
+                cursor.moveToNext();
+            }
+
+        }
+        cursor.close();
+        return dolls;
+    }
+
+    //-------- dolls by ethnicity
+    public List<Doll> getEthnicDolls() {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = COL_ETHNICITY + " NOT ? ";
+
+        Cursor cursor = db.query(DOLL_TABLE_NAME,
+                new String[]{},
+                selection,
+                new String[]{"caucaisan"},
+                null,
+                null,
+                null);
+
+        List<Doll> dolls = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+                String itemname = cursor.getString(cursor.getColumnIndex(COL_TITLE));
+                String company = cursor.getString(cursor.getColumnIndex(COL_COMPANY));
+                String ethnicity = cursor.getString(cursor.getColumnIndex(COL_ETHNICITY));
+                String retailPrice = cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE));
+                int height = cursor.getInt(cursor.getColumnIndex(COL_HEIGHT));
+                String currentPrice = cursor.getString(cursor.getColumnIndex(COL_CURRENT_PRICE));
+                int discount = cursor.getInt(cursor.getColumnIndex(COL_DISCOUNT));
+                String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
+                int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
+                int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+
+                Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
+                        ethnicity, descrip, wishlist, checkout);
+                dolls.add(doll);
+
+                cursor.moveToNext();
+            }
+
+        }
+        cursor.close();
+        return dolls;
+    }
 
     //--------add item to shopping car
     public void addItemToCart(long id) {

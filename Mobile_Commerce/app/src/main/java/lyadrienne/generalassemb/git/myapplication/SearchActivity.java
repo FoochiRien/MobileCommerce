@@ -52,15 +52,14 @@ public class SearchActivity extends AppCompatActivity {
             case 2:
                 dolls=helper.getClearanceItems();
                 break;
-//            case 3:
-//                dolls=helper.getBarbie();
-//                break;
-//            case 4:
-//                dolls=helper.getEtnicity();
-//                break;
+            case 3:
+                dolls=helper.getBarbieDolls();
+                break;
+            case 4:
+                dolls=helper.getEthnicDolls();
+                break;
             default:
                 dolls=helper.getAllDolls();
-
         }
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2);
@@ -75,7 +74,6 @@ public class SearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
 
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView) menu.findItem(R.id.searchbar).getActionView();
         ComponentName component = new ComponentName(this, SearchActivity.class);
@@ -86,21 +84,15 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
-
-
-
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);
     }
 
     public void handleIntent(Intent intent){
-
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
-
             String query = intent.getStringExtra(SearchManager.QUERY);
-
-            Log.d("hghg", "handleIntent: jhjgjhgjhgjhgjhgjgjhgjh");
+            Log.d("TAG", "handleIntent: BOJANGLES FRIED CHICKEN");
             adapter.replaceAllDolls(DollSQLiteOpenHelper.getInstance(SearchActivity.this).searchDollList(query));
         }
     }

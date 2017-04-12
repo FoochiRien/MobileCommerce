@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSaleView = (Button) findViewById(R.id.sale_view);
         mDiscountView = (Button) findViewById(R.id.deal_view);
         mClearanceView = (Button) findViewById(R.id.clearance_view);
-//        mBarbieView = (Button) findViewById(R.id.barbie_view);
-//        mEthnicDollsView = (Button) findViewById(R.id.ethnicity_view);
+        mBarbieView = (Button) findViewById(R.id.barbie_view);
+        mEthnicDollsView = (Button) findViewById(R.id.ethnicity_view);
 
         mSaleView.setOnClickListener(this);
         mDiscountView.setOnClickListener(this);
         mClearanceView.setOnClickListener(this);
-//        mBarbieView.setOnClickListener(this);
-//        mEthnicDollsView.setOnClickListener(this);
+        mBarbieView.setOnClickListener(this);
+        mEthnicDollsView.setOnClickListener(this);
 
     }
     @Override
@@ -94,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent2.putExtra("search",2);
                 startActivity(intent2);
                 break;
-//            case R.id.barbie_view: //todo create barbie and ethnicity view
-//                Intent intent3 = new Intent(MainActivity.this, SearchActivity.class);
-//                intent3.putExtra("search",3);
-//                break;
-//            case R.id.ethnicity_view:
-//                Intent intent4 = new Intent(MainActivity.this, SearchActivity.class);
-//                intent4.putExtra("search",4);
-//                break;
+            case R.id.barbie_view:
+                Intent intent3 = new Intent(MainActivity.this, SearchActivity.class);
+                intent3.putExtra("search",3);
+                break;
+            case R.id.ethnicity_view:
+                Intent intent4 = new Intent(MainActivity.this, SearchActivity.class);
+                intent4.putExtra("search",4);
+                break;
             default:
                 return;
 

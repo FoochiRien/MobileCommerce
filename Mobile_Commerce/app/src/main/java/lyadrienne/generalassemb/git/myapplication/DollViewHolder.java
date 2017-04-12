@@ -3,6 +3,7 @@ package lyadrienne.generalassemb.git.myapplication;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -12,6 +13,7 @@ import android.widget.TextView;
 public class DollViewHolder extends RecyclerView.ViewHolder {
     View mRootView;
     TextView mItemNameView, mCurrentPriceView;
+    ImageView mImageView;
 
 
     public DollViewHolder(View itemView) {
@@ -21,6 +23,8 @@ public class DollViewHolder extends RecyclerView.ViewHolder {
         mRootView = itemView;
         mItemNameView = (TextView) itemView.findViewById(R.id.itemname_view);
         mCurrentPriceView = (TextView) itemView.findViewById(R.id.currentprice_view);
+        //todo picasso
+//        mImageView imageView = (ImageView) itemView.findViewById(R.id.product_imageview);
 
     }
 
