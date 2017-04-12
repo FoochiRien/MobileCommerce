@@ -44,8 +44,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         recyclerView.setAdapter(adapter);
 
         mSumTotal = (TextView) findViewById(R.id.sum_textview);
-        mCheckOutButton = (Button) findViewById(R.id.checkout_toolbar);
+        float sum = helper.sumOfShoppingCart();
+        mSumTotal.setText("$ "+ sum);
 
+        mCheckOutButton = (Button) findViewById(R.id.checkout_button);
         mCheckOutButton.setOnClickListener(this);
 
 
@@ -83,9 +85,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ShoppingCartActivity.this, "Purcahse complete", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShoppingCartActivity.this, "Purchase complete", Toast.LENGTH_SHORT).show();
                     }
-                });
+                })
+        .show();
 
 
         }

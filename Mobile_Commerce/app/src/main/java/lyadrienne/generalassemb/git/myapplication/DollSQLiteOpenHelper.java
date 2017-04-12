@@ -378,8 +378,6 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         float sum=0 ;
         if(cursor.moveToFirst()){
             while(!cursor.isAfterLast()){
-//                if(cursor.getColumnIndex())
-
                 sum+=Float.parseFloat(cursor.getString(cursor.getColumnIndex(COL_RETAIL_PRICE)));
                 cursor.moveToNext();
             }
