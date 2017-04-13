@@ -8,10 +8,10 @@ public class Doll {
 
     private long mId;
     private int mHeight, mDiscount, mWishList, mCheckOut;
-    private String mItemName, mCompany, mEthnicity, mDescription, mCurrentPrice, mRetailPrice;
+    private String mItemName, mCompany, mEthnicity, mDescription, mCurrentPrice, mRetailPrice, mProductView;
 
 
-    public Doll(long id, String retailPrice, String currentPrice, int height, int discount, String itemName, String company, String ethnicity, String description, int wishList, int checkOut) {
+    public Doll(long id, String retailPrice, String currentPrice, int height, int discount, String itemName, String company, String ethnicity, String description, int wishList, int checkOut, String itemImage) {
         mId = id;
         mRetailPrice = retailPrice;
         mCurrentPrice = currentPrice;
@@ -23,8 +23,10 @@ public class Doll {
         mDescription = description;
         mWishList = wishList;
         mCheckOut = checkOut;
+        mProductView = itemImage;
     }
 
+    public String getProductView() { return mProductView; }
 
     public long getId() {
         return mId;
@@ -34,9 +36,6 @@ public class Doll {
         return mWishList;
     }
 
-    public int getCheckOut() {
-        return mCheckOut;
-    }
 
     public String getCurrentPrice() {
         return mCurrentPrice;
@@ -46,25 +45,11 @@ public class Doll {
         return mRetailPrice;
     }
 
-    public int getHeight() {
-        return mHeight;
-    }
-
-    public int getDiscount() {
-        return mDiscount;
-    }
 
     public String getItemName() {
         return mItemName;
     }
 
-    public String getCompany() {
-        return mCompany;
-    }
-
-    public String getEthnicity() {
-        return mEthnicity;
-    }
 
     public String getDescription() {
         return mDescription;

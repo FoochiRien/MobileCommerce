@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -22,15 +24,15 @@ public class ShoppingCartRecyclerViewAdapater extends RecyclerView.Adapter<DollV
     @Override
     public DollViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        return new DollViewHolder(inflater.inflate(R.layout.custom_search_layout, parent, false));
+        return new DollViewHolder(inflater.inflate(R.layout.custom_checkout_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(final DollViewHolder holder, final int position) {
         final Doll currentDoll = mDolls.get(position);
 
-        holder.mItemNameView.setText(currentDoll.getItemName());
-        holder.mCurrentPriceView.setText(String.valueOf(currentDoll.getRetailPrice()));
+        holder.mItemNameView2.setText(currentDoll.getItemName());
+        holder.mCurrentPriceView2.setText(String.valueOf(currentDoll.getRetailPrice()));
         holder.mRootView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -50,8 +52,8 @@ public class ShoppingCartRecyclerViewAdapater extends RecyclerView.Adapter<DollV
                 v.getContext().startActivity(intent);
             }
         });
-
-
+        Picasso.with(holder.mImageView2.getContext()).load(currentDoll.getProductView()).fit().into(holder.mImageView2);
+        System.out.println(currentDoll.getProductView()+ "Test for Photo");
     }
 
     @Override

@@ -36,14 +36,14 @@ public class DetailActivity extends AppCompatActivity {
         mDescriptionView = (TextView) findViewById(R.id.detail_descripview);
         mRetailPriceView = (TextView) findViewById(R.id.detail_amountview);
         mShoppingCartImage = (ImageView) findViewById(R.id.detail_shoppingcart);
-        //todo picasso
-//        mProductView imageView = (ImageView) findViewById(R.id.detail_imageview);
+        mProductView = (ImageView) findViewById(R.id.detail_imageview);
 
         mItemNameView.setText(doll.getItemName());
         mDescriptionView.setText(doll.getDescription());
         mRetailPriceView.setText(String.valueOf(doll.getCurrentPrice()));
-        //todo picasso
-//        Picasso.with(this).load(Doll.getItemImage().resize(200,200).into(holder.imageView);
+
+        Picasso.with(mProductView.getContext()).load(doll.getProductView()).fit().into(mProductView);
+        System.out.println(doll.getProductView()+"Test for Photo");
 
         mAddtoCart = (Button) findViewById(R.id.detail_addtocart);
         mWishList= (TextView) findViewById(R.id.detail_addwishlist);

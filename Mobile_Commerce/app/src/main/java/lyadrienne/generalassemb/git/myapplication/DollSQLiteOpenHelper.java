@@ -35,7 +35,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String COL_DESCRIPTION = "descrip";
     private static final String COL_WISH_LIST = "wish_list";
     private static final String COL_CHECK_OUT = "check_out";
-    private static final String 
+    private static final String COL_URL = "url";
 
     private static final String CREATE_DOLL_TABLE = "CREATE TABLE" + DOLL_TABLE_NAME + "(" +
             COL_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -48,7 +48,8 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
             COL_DISCOUNT + "INTEGER, " +
             COL_DESCRIPTION + "TEXT, " +
             COL_WISH_LIST + "TEXT, " +
-            COL_CHECK_OUT + "TEXT )";
+            COL_CHECK_OUT + "TEXT," +
+            COL_URL + "TEXT )";
 
     // ------ Singleton instance variable, static getter method, and private constructor
 
@@ -100,9 +101,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -138,7 +140,8 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndex(COL_ETHNICITY)),
                         cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION)),
                         cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST)),
-                        cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT))));
+                        cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT)),
+                        cursor.getString(cursor.getColumnIndex(COL_URL))));
                 cursor.moveToNext();
             }
         }
@@ -168,7 +171,8 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndex(COL_ETHNICITY)),
                         cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION)),
                         cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST)),
-                        cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT)));
+                        cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT)),
+                        cursor.getString(cursor.getColumnIndex(COL_URL)));
             }
         cursor.close();
         return dolls;
@@ -207,9 +211,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -249,9 +254,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -291,9 +297,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -333,9 +340,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -375,9 +383,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -387,6 +396,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
         cursor.close();
         return dolls;
     }
+
 
     //--------add item to shopping car
     public void addItemToCart(long id) {
@@ -436,9 +446,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();
@@ -530,9 +541,10 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 String descrip = cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION));
                 int wishlist = cursor.getInt(cursor.getColumnIndex(COL_WISH_LIST));
                 int checkout = cursor.getInt(cursor.getColumnIndex(COL_CHECK_OUT));
+                String url = cursor.getString(cursor.getColumnIndex(COL_URL));
 
                 Doll doll = new Doll(id, retailPrice, currentPrice, height, discount, itemname, company,
-                        ethnicity, descrip, wishlist, checkout);
+                        ethnicity, descrip, wishlist, checkout, url);
                 dolls.add(doll);
 
                 cursor.moveToNext();

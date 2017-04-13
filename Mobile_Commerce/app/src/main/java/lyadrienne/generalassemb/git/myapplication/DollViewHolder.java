@@ -12,20 +12,25 @@ import android.widget.TextView;
 
 public class DollViewHolder extends RecyclerView.ViewHolder {
     View mRootView;
-    TextView mItemNameView, mCurrentPriceView;
-    ImageView mImageView;
+    TextView mItemNameView, mItemNameView2, mCurrentPriceView, mCurrentPriceView2;
+    ImageView mImageView, mImageView2;
 
 
     public DollViewHolder(View itemView) {
         super(itemView);
 
         //----Recyclerview
+        // 1 references the searchrecycler
+        // 2 references the shoppingcartrecycler
         mRootView = itemView;
         mItemNameView = (TextView) itemView.findViewById(R.id.itemname_view);
-        mCurrentPriceView = (TextView) itemView.findViewById(R.id.currentprice_view);
-        //todo picasso
-//        mImageView imageView = (ImageView) itemView.findViewById(R.id.product_imageview);
+        mItemNameView2 = (TextView) itemView.findViewById(R.id.itemname_view2);
 
+        mCurrentPriceView = (TextView) itemView.findViewById(R.id.currentprice_view);
+        mCurrentPriceView2 = (TextView) itemView.findViewById(R.id.currentprice_view2);
+
+        mImageView = (ImageView) itemView.findViewById(R.id.product_imageview);
+        mImageView2 = (ImageView) itemView.findViewById(R.id.product_imageview2);
     }
 
 

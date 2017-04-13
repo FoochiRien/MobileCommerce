@@ -1,9 +1,7 @@
 package lyadrienne.generalassemb.git.myapplication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,12 +44,10 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
                 v.getContext().startActivity(intent);
             }
         });
-        //todo picasso
-//        Picasso.with(this).load(Doll.getImageView).resize(200,200).into(holder.mImageView);
-        }
 
-
-
+        Picasso.with(holder.mImageView.getContext()).load(currentDoll.getProductView()).resize(200,200).into(holder.mImageView);
+        System.out.println(currentDoll.getProductView()+ " Test for photo");
+    }
 
     @Override
     public int getItemCount() {

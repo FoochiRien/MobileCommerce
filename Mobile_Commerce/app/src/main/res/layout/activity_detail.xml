@@ -20,27 +20,40 @@
 
     <TextView
         android:id="@+id/detail_titleview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorViewBackground"
         />
 
     <TextView
         android:id="@+id/detail_descripview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:text="Test"
+        android:scrollHorizontally="false"
         android:background="@color/colorViewBackground"
        />
 
     <TextView
         android:id="@+id/detail_amountview"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:textAlignment="center"
         android:layout_height="wrap_content"
-        android:text="$34.330"
-        android:textSize="18dp"
-        android:layout_margin="15dp"
+        android:padding="7dp"
+        android:text="##.##"
+        android:textSize="15dp"
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="5dp"
         android:background="@color/colorViewBackground"
         />
 
@@ -55,16 +68,17 @@
     <TextView
         android:id="@+id/detail_addwishlist"
         android:text="@string/addtowishlist"
-        android:padding="15dp"
+        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
        />
 
     <ImageView
         android:id="@+id/detail_shoppingcart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="15dp"
         android:src="@drawable/ic_shopping_bag"
         />
 
