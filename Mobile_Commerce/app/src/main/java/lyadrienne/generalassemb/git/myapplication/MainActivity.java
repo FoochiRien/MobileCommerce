@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 import lyadrienne.generalassemb.git.myapplication.setup.DBAssetHelper;
@@ -96,11 +97,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.barbie_view:
                 Intent intent3 = new Intent(MainActivity.this, SearchActivity.class);
-                intent3.putExtra("search",3);
+                intent3.putExtra("search", 3);
+                startActivity(intent3);
                 break;
             case R.id.ethnicity_view:
                 Intent intent4 = new Intent(MainActivity.this, SearchActivity.class);
                 intent4.putExtra("search",4);
+                startActivity(intent4);
                 break;
             default:
                 return;

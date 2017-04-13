@@ -78,7 +78,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
         builder.setTitle("Checkout")
@@ -91,6 +91,8 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                         DollSQLiteOpenHelper.getInstance(ShoppingCartActivity.this).removeAllItemsFromCart();
                         dolls = DollSQLiteOpenHelper.getInstance(ShoppingCartActivity.this).getShoppingCartItems();
                         shoppingadapater.replaceAllDolls(dolls);
+                        mSumTotal.setText(String.valueOf(DollSQLiteOpenHelper.getInstance(v.getContext()).sumOfShoppingCart()));
+
                     }
                 })
         .show();

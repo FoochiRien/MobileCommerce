@@ -7,6 +7,7 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -128,6 +129,7 @@ public class DollSQLiteOpenHelper extends SQLiteOpenHelper {
                 null);
 
         List<Doll> searchResults = new ArrayList<>();
+
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 searchResults.add(new Doll(cursor.getLong(cursor.getColumnIndex(COL_ID)),
