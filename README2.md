@@ -3,20 +3,28 @@
 #Project 2: Mobile Commerce 
 
 ###Overview
+This app will allow the user to research and purchase dolls. Possible problems with the app include: images attached to the wrong doll, no error message is thrown when there are no search results found on the search activity, no function to stop the user from wrongfully deleting an item from the cart, users are not able to resize images, users are not able to "add to cart" from the search activity. 
 
 
 ###Main Activity
+On the main activity, the user is able to access predefined searches that are categorized by sale, discount, clearance, Barbie, and ethnicity. When the user clicks on the link, they will be taken to the search activty where they can view the dolls. If the user would like to view all dolls, they are able to click on the search icon in the toolbar, which will take them to the search activity. 
+The user is also able to access the shopping cart from the home page by clicking on the "shopping cart" icon in the toolbar. 
 
 
 ###Search Activity
+On the search activity the user is able to view all the dolls available in the database. They can scroll through the list where they are able to see an image of the doll, the name and price of the doll. When the user clicks on an image they will be taken to the detail activity where they will get more information about the doll. 
+The user is able to search the database from the toolbar by clicking on the search icon. They are able to search enter different search requirments. This will narrow the list results. 
+The user is also able to access the shopping cart from the search activity by clicking on the shopping cart icon. 
 
 
 ###Detail Activity
+On the detail activity the user is able to get more information about the doll. They are able to see the image, title, description, and price about the doll. The user is also able to add to thier shopping cart by clicking on the "Add to Cart" button. Once they have clicked on the button, they will see a toast indicating the item has been added to the cart. To return to the search screen the user will need to use the phones back button. To get to the shopping cart the user can click on the shopping cart icon at the bottom of the screen. 
 
 
 ###Shopping Cart Activity
-
-
+On the shopping cart activity page, the user is able to review items in the cart, delete items, see total of items in cart, and return to the search screen. The user is able to view the image of the item, the title and price. When the user short clicks on the image, they are redirected to the detail activity. When the user long clicks on the image, it is removed from the cart. 
+When the user clicks on check-out, an alert dialogue pops-up to thank them for thier purchase and all items are removed from the cart.
+The user is able to search for more items by clicking on the search icon in the toolbar. 
 
 
 #User Stories
