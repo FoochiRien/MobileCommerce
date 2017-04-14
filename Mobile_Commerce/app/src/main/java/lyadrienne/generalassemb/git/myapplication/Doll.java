@@ -13,17 +13,17 @@ public class Doll {
 
     public Doll(long id, String retailPrice, String currentPrice, int height, int discount, String itemName, String company, String ethnicity, String description, int wishList, int checkOut, String itemImage) {
         mId = id;
-        mRetailPrice = retailPrice;
-        mCurrentPrice = currentPrice;
-        mHeight = height;
-        mDiscount = discount;
-        mItemName = itemName;
-        mCompany = company;
-        mEthnicity = ethnicity;
-        mDescription = description;
-        mWishList = wishList;
-        mCheckOut = checkOut;
-        mProductView = itemImage;
+        mRetailPrice = retailPrice; // ****** price ******
+        mCurrentPrice = currentPrice; //price after a discount
+        mHeight = height; //additional search criteria not used
+        mDiscount = discount; //additional search criteria not used
+        mItemName = itemName; //*** item name***
+        mCompany = company; //additional search criteria not used
+        mEthnicity = ethnicity; //additional search criteria
+        mDescription = description; //**** description *****
+        mWishList = wishList; //additional search criteria not used
+        mCheckOut = checkOut; //columns to hold if in or out of shoppingcart
+        mProductView = itemImage; //***** url for image *****
     }
 
     public String getProductView() { return mProductView; }

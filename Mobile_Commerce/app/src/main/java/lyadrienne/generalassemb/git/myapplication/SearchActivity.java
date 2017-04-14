@@ -32,6 +32,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        // title for the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Search");
@@ -40,6 +41,8 @@ public class SearchActivity extends AppCompatActivity {
 
         DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
 
+        //process the onclick from the buttons from the mainactivity that populates with predefined
+        //searches
         Intent intent = getIntent();
         switch (intent.getIntExtra("search", -1))
         {
@@ -74,6 +77,7 @@ public class SearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
 
+        //search functionality
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView) menu.findItem(R.id.searchbar).getActionView();
         ComponentName component = new ComponentName(this, SearchActivity.class);
@@ -97,6 +101,7 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+    //menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {

@@ -54,6 +54,7 @@ public class DollRecyclerViewAdapter extends RecyclerView.Adapter<DollViewHolder
         return mDolls.size();
     }
 
+    //-------resets the list for updating the list with the results from a search
     public void replaceAllDolls(List<Doll> newDolls){
 
         mDolls = newDolls;

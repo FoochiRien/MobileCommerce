@@ -16,9 +16,11 @@ import java.util.List;
 import lyadrienne.generalassemb.git.myapplication.setup.DBAssetHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button mSaleView, mDiscountView, mClearanceView, mBarbieView, mEthnicDollsView;
-//    public static final String SELECTED_ITEM_ID_KEY = "selectedItemIdKey";
 
+    /*Main activity(first screen to display). User is able to search, go to shopping cart,
+    and view predefined searches that will populate on the search activity.
+    */
+    Button mSaleView, mDiscountView, mClearanceView, mBarbieView, mEthnicDollsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
         dbSetup.getReadableDatabase();
-//
-//        DollSQLiteOpenHelper helper = DollSQLiteOpenHelper.getInstance(this);
-//        List<Doll> dolls = helper.getAllDolls();
-//
-//        final long id = getIntent().getLongExtra(SELECTED_ITEM_ID_KEY, -1);
-//        Doll doll = DollSQLiteOpenHelper.getInstance(this).getItemById(id);
 
         //----------- Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    //these populate on the search activity
     @Override
     public void onClick(View v) {
         switch(v.getId()){

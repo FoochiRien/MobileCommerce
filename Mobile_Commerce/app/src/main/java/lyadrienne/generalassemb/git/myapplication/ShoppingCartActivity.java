@@ -20,17 +20,19 @@ import java.util.List;
 
 public class ShoppingCartActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // Activity where the user is able to update and/or purchase items in the cart
     private ShoppingCartRecyclerViewAdapater shoppingadapater;
     List<Doll> dolls;
 
-    TextView mSumTotal;
-    Button mCheckOutButton;
+    TextView mSumTotal;  //View that shows the sum of items in the cart
+    Button mCheckOutButton; // Clicking will display message and remove all items from cart
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppingcart);
 
+        // change the name in the toolbar to Shopping Cart
         Toolbar toolbar = (Toolbar) findViewById(R.id.checkout_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Shopping Cart");
@@ -46,10 +48,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         shoppingadapater = new ShoppingCartRecyclerViewAdapater(dolls);
         recyclerView.setAdapter(shoppingadapater);
 
+        //Gets total of items in cart
         mSumTotal = (TextView) findViewById(R.id.sum_textview);
-
         mSumTotal.setText(String.valueOf(helper.sumOfShoppingCart()));
-
+        //user clicks button to activate the below alert dialogue, remove from cart and toast
         mCheckOutButton = (Button) findViewById(R.id.checkout_button);
         mCheckOutButton.setOnClickListener(this);
     }
@@ -77,6 +79,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    /*
+    When the user is ready to checkout.
+    An alert dialog displays message for checkout and removes all items from the cart.
+     */
     @Override
     public void onClick(final View v) {
 

@@ -32,18 +32,20 @@ public class DetailActivity extends AppCompatActivity {
 
 
         //----Detail View
-        mItemNameView = (TextView) findViewById(R.id.detail_titleview);
-        mDescriptionView = (TextView) findViewById(R.id.detail_descripview);
-        mRetailPriceView = (TextView) findViewById(R.id.detail_amountview);
-        mShoppingCartImage = (ImageView) findViewById(R.id.detail_shoppingcart);
-        mProductView = (ImageView) findViewById(R.id.detail_imageview);
+        mItemNameView = (TextView) findViewById(R.id.detail_titleview); //Name of the doll
+        mDescriptionView = (TextView) findViewById(R.id.detail_descripview); //description of the doll
+        mRetailPriceView = (TextView) findViewById(R.id.detail_amountview); //amount
+        mShoppingCartImage = (ImageView) findViewById(R.id.detail_shoppingcart); //takes user to shopping cart
+        mProductView = (ImageView) findViewById(R.id.detail_imageview); //image of doll
 
+        //-------Set images and view with data
         mItemNameView.setText(doll.getItemName());
         mDescriptionView.setText(doll.getDescription());
         mRetailPriceView.setText(String.valueOf(doll.getCurrentPrice()));
-
         Picasso.with(mProductView.getContext()).load(doll.getProductView()).fit().into(mProductView);
         System.out.println(doll.getProductView()+"Test for Photo");
+
+        //--------ways for the user to add items to the cart or wish list
 
         mAddtoCart = (Button) findViewById(R.id.detail_addtocart);
         mWishList= (TextView) findViewById(R.id.detail_addwishlist);
@@ -53,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DollSQLiteOpenHelper.getInstance(v.getContext()).addItemToCart(id);
                 Toast.makeText(DetailActivity.this, "Item added to cart.", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -65,6 +66,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //------- moving to shopping cart
         mShoppingCartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
